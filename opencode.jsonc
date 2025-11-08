@@ -1,0 +1,26 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "keybinds": {
+    "session_child_cycle":"shift+ctrl+right",
+    "session_child_cycle_reverse": "shift+ctrl+left"
+  },
+  
+  // MCP Servers Configuration
+  "mcp": {
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp"],
+      "enabled": true
+    }
+    // Add more MCP servers as needed:
+    // "filesystem": { "type": "local", "command": ["..."], "enabled": true }
+    // "database": { "type": "local", "command": ["..."], "enabled": true }
+  },
+  
+  // Instructions - Load agent definitions and behavioral patterns
+  "instructions": [
+    "AGENTS.md",
+    ".opencode/agent/*.md"
+  ]
+}

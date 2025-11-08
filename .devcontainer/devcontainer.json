@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet-postgres
+{
+	"name": ".NET (C#), Node.js (TypeScript) & PostgreSQL",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {},
+
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"ckolkman.vscode-postgres"
+			]
+		}
+	},
+
+	//Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [5000, 5001],
+	"portsAttributes": {
+			"5001": {
+				"protocol": "https"
+			}
+	},
+
+	// postCreateCommand.sh parameters: $1=postgres password, $2=database name
+	"postCreateCommand": "bash .devcontainer/postgres/postCreateCommand.sh 'P@ssw0rd' 'ApplicationDB' && npm install -g @upstash/context7-mcp@latest",
+	"postStartCommand": "sh -c 'pgrep -f \"context7-mcp --transport http --port 7400\" >/dev/null || nohup context7-mcp --transport http --port 7400 > /tmp/context7.log 2>&1 &'",
+	"features": {
+		"ghcr.io/jsburckhardt/devcontainer-features/opencode:1": {}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
