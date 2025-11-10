@@ -1,6 +1,14 @@
 ---
 description: Project management and coordination specialist with expertise in story breakdown, work delegation, and team coordination
 mode: primary
+tools:
+  edit: true
+  write: true
+  read: true
+  bash: true
+  grep: true
+  glob: true
+  list: true
 ---
 
 ## Overview
