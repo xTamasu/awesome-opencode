@@ -1,0 +1,167 @@
+---
+# OpenCode required fields
+description: {{ agent.description.short }}
+mode: {{ agent.mode }}
+
+# Optional Claude Code compatibility
+name: {{ agent.name }}
+tools: Edit, MultiEdit, Read, Write, Bash, Grep, Glob, LS
+---
+
+## Overview
+
+You are a **{{ agent.display_name }} Agent** responsible for:
+{% for responsibility in agent.responsibilities[:3] %}
+- {{ responsibility.category if responsibility.category else responsibility }}
+{% endfor %}
+
+**{{ agent.role.operating_principle }}**
+
+---
+
+## Core Responsibilities
+
+{% for responsibility in agent.responsibilities %}
+### {{ loop.index }}. {{ responsibility.category }}
+{% for duty in responsibility.duties %}
+- {{ duty }}
+{% endfor %}
+
+{% endfor %}
+---
+
+## Behavioral Guidelines
+
+### ✅ YOU SHOULD
+
+{% for should_item in agent.behavioral_guidelines.should_do %}
+**{{ should_item.category }}**:
+{% for action in should_item.actions %}
+- {{ action }}
+{% endfor %}
+
+{% endfor %}
+
+### ❌ YOU SHOULD NOT
+
+{% for should_not_item in agent.behavioral_guidelines.should_not_do %}
+**{{ should_not_item.category }}**:
+{% for action in should_not_item.actions %}
+- {{ action }}
+{% endfor %}
+
+{% endfor %}
+
+**Pattern to Follow:**
+```
+{{ agent.behavioral_guidelines.workflow_example }}
+```
+
+---
+
+## Workflow
+
+### Before Implementation
+
+{% for step in agent.workflow.before_implementation %}
+{{ loop.index }}. **{{ step.split(':')[0] }}**
+{% if ':' in step %}
+   {{ step.split(':', 1)[1].strip() }}
+{% endif %}
+{% endfor %}
+
+### During Implementation
+
+{% for step in agent.workflow.during_implementation %}
+{{ loop.index }}. **{{ step.split(':')[0] }}**
+{% if ':' in step %}
+   {{ step.split(':', 1)[1].strip() }}
+{% endif %}
+{% endfor %}
+
+### After Implementation
+
+{% for step in agent.workflow.after_implementation %}
+{{ loop.index }}. **{{ step.split(':')[0] }}**
+{% if ':' in step %}
+   {{ step.split(':', 1)[1].strip() }}
+{% endif %}
+{% endfor %}
+
+---
+
+## Memory Integration
+
+### Before Implementation
+{{ agent.memory_integration.search_before }}
+
+### After Implementation
+{{ agent.memory_integration.store_after }}
+
+**Storage Location:**
+{% for category in agent.memory_integration.categories %}
+- `memory/{{ category }}/` - {{ agent.memory_integration.category_descriptions.get(category, category + ' storage') }}
+{% endfor %}
+
+---
+
+## Quality Standards
+
+{% for standard in agent.quality_standards.standards %}
+- {{ standard }}
+{% endfor %}
+
+### Quality Checklist
+
+Before completing work:
+
+{% for item in agent.quality_standards.checklist %}
+- [ ] {{ item }}
+{% endfor %}
+
+---
+
+## Success Criteria
+
+**You're successful when:**
+{% for criterion in agent.success_criteria %}
+- {{ criterion }}
+{% endfor %}
+
+---
+{% if agent.optional_sections %}
+{% if agent.optional_sections.tools_and_commands %}
+
+## Tools and Commands
+
+### Available Tools
+{% for tool in agent.optional_sections.tools_and_commands.tools %}
+- **{{ tool.name }}**: {{ tool.description }}
+{% endfor %}
+
+### Common Commands
+```bash
+{% for command in agent.optional_sections.tools_and_commands.commands %}
+# {{ command.description }}
+{{ command.command }}
+{% endfor %}
+```
+
+---
+{% endif %}
+{% if agent.optional_sections.collaboration_patterns %}
+
+## Collaboration
+
+{% for collab in agent.optional_sections.collaboration_patterns %}
+### With @{{ collab.agent }}
+{% for pattern in collab.patterns %}
+- {{ pattern }}
+{% endfor %}
+
+{% endfor %}
+---
+{% endif %}
+{% endif %}
+
+**Remember**: {{ agent.role.key_reminder if agent.role.key_reminder else 'Follow standards, search memory, store learnings, provide comprehensive summaries.' }}
