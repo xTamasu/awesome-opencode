@@ -2,7 +2,7 @@
 
 **Adapted from [intelligent-claude-code](https://github.com/intelligentcode-ai/intelligent-claude-code) for OpenCode**
 
-Transform your OpenCode workspace into a 14-agent virtual development team with structured AgentTask execution, memory-first operations, and complexity-based work breakdown.
+Transform your OpenCode workspace into a **13-agent virtual development team** with structured AgentTask execution, memory-first operations, and complexity-based work breakdown.
 
 ---
 
@@ -16,39 +16,41 @@ cat SETUP.md
 cat AGENTS.md
 
 # 3. Start using agents
-@PM help
-@PM create AgentTask for [your task]
-@Developer implement [feature]
-```
+@Project-Manager Lets create a todo app!
 
 ---
 
 ## ✨ What You Get
 
-### 14 Specialist Agents
-- **Leadership**: @PM, @Architect
-- **Development**: @Developer, @AI-Engineer, @Database-Engineer
-- **Operations**: @DevOps-Engineer, @System-Engineer
-- **Quality**: @QA-Engineer, @Security-Engineer, @Backend-Tester
-- **Design**: @Web-Designer, @Requirements-Engineer
+### 13 Specialist Agents
+
+* **Leadership**: @Project-Manager, @Architect
+* **Design & Requirements**: @Product-Manager, @Requirements-Engineer, @Designer
+* **Development**: @Developer, @AI-Engineer, @Database-Engineer
+* **Operations**: @DevOps-Engineer, @System-Engineer
+* **Quality & Security**: @QA-Engineer, @Security-Engineer, @Tester, @User
 
 ### AgentTask System
-- **Auto-Sizing**: Nano (0-2) → Tiny (3-5) → Medium (6-15) → Large (16-30) → Mega (30+)
-- **Complete Context**: Embedded standards, patterns, examples
-- **Memory-First**: Search before implement, store after solve
-- **Quality Built-In**: Tests, validation, documentation required
+
+* **Auto-Sizing**: Nano (0–2) → Tiny (3–5) → Medium (6–15) → Large (16–30) → Mega (30+)
+* **Complete Context**: Embedded standards, patterns, examples
+* **Memory-First**: Search before implement, store after solve
+* **Quality Built-In**: Tests, validation, and documentation required
 
 ### Memory System
-- **Pattern Storage**: Reusable code patterns
-- **Learning Capture**: Problem solutions
-- **Knowledge Base**: Architecture decisions
-- **Team Sharing**: Version-controlled via git
+
+* **Pattern Storage**: Reusable code and design patterns
+* **Learning Capture**: Problem–solution knowledge
+* **Knowledge Base**: Architecture and system design decisions
+* **Team Sharing**: Version-controlled via git
 
 ### Behavioral Patterns
-- **Main Scope = Coordination**: PM creates AgentTasks
-- **Specialists Execute**: Technical work delegated
-- **Memory-First**: Always search before implementing
-- **Quality Gates**: Comprehensive validation
+
+* **Main Scope = Coordination**: Project Manager creates AgentTasks
+* **Design-to-Execution Bridge**: Product Manager, Requirements Engineer, Designer, and Architect convert user stories into executable tasks
+* **Specialists Execute**: Implementation agents handle delivery
+* **Memory-First**: Always search before implementing
+* **Quality Gates**: Validation, documentation, and testing required
 
 ---
 
@@ -57,7 +59,7 @@ cat AGENTS.md
 ```
 .
 ├── .opencode/
-│   ├── agents/           # 14 agent definitions
+│   ├── agents/           # 13 agent definitions
 │   ├── patterns/         # Best practices (add your own)
 │   └── config.yaml       # System configuration
 │
@@ -81,42 +83,42 @@ cat AGENTS.md
 
 ```
 User: "Add authentication to the API"
-  ↓
-@PM analyzes complexity
-  ↓
-PM: 12 points = Medium AgentTask
-PM: Searches memory for auth patterns
-PM: Creates AgentTask with complete context
-PM: @Developer execute AgentTask
-  ↓
-Developer: Implements using embedded patterns
-Developer: Runs tests, provides summary
+↓
+Project Manager analyzes complexity
+↓
+12 points = Medium AgentTask
+Project Manager searches memory for auth patterns
+Creates AgentTask with complete context
+Delegates to @Developer
+↓
+Developer implements using embedded patterns
+Developer runs tests and provides summary
 ```
 
 ### 2. Large Work → Story Breakdown
 
 ```
 User: "Build user management system"
-  ↓
-@PM breaks down work
-  ↓
-PM: 25 points = Large → Create Story
-PM: Breaks into smaller AgentTasks:
+↓
+Project Manager breaks down work
+↓
+25 points = Large → Create Story
+Breaks into smaller AgentTasks:
     - Setup (2 pts) → @Developer
     - CRUD (5 pts) → @Developer
     - Tests (4 pts) → @QA-Engineer
-PM: Coordinates execution
+Coordinates execution across agents
 ```
 
 ### 3. Memory-First Implementation
 
 ```
 @Developer implement feature X
-  ↓
-Developer: Searches memory/Pattern/
-Developer: Finds similar implementation
-Developer: Applies pattern with context
-Developer: Stores novel solution back to memory
+↓
+Search memory/Pattern/
+Find similar implementation
+Apply pattern with context
+Store novel solution back to memory
 ```
 
 ---
@@ -124,94 +126,105 @@ Developer: Stores novel solution back to memory
 ## 🔧 Key Features
 
 ### Complexity-Based Sizing
-Work is automatically categorized:
 
-| Tier | Points | Description | Action |
-|------|--------|-------------|--------|
-| **Nano** | 0-2 | Trivial changes | Direct execution |
-| **Tiny** | 3-5 | Simple tasks | Direct execution |
-| **Medium** | 6-15 | Standard features | Direct execution |
-| **Large** | 16-30 | Complex work | Create Story first |
-| **Mega** | 30+ | System-wide | Create Story first |
+| Tier       | Points | Description       | Action             |
+| ---------- | ------ | ----------------- | ------------------ |
+| **Nano**   | 0–2    | Trivial changes   | Direct execution   |
+| **Tiny**   | 3–5    | Simple tasks      | Direct execution   |
+| **Medium** | 6–15   | Standard features | Direct execution   |
+| **Large**  | 16–30  | Complex work      | Create Story first |
+| **Mega**   | 30+    | System-wide       | Create Story first |
 
 ### AgentTask Structure
-Every AgentTask includes:
-- **Goal**: What we're building
-- **Why**: Business value
-- **Context**: Complete embedded information
-- **Implementation**: Step-by-step approach
-- **Validation**: Success criteria and tests
-- **Completion**: Deliverables and learnings
+
+Each AgentTask includes:
+
+* **Goal** — What’s being built
+* **Why** — Business value and user impact
+* **Context** — Standards, patterns, examples
+* **Implementation** — Technical approach and steps
+* **Validation** — Acceptance criteria and tests
+* **Completion** — Deliverables and learnings
 
 ### Memory System
-- **Before**: Search for patterns
-- **During**: Apply discovered solutions
-- **After**: Store new learnings
-- **Share**: Via git with team
+
+* **Before:** Search for patterns
+* **During:** Apply discovered solutions
+* **After:** Store new learnings
+* **Share:** Version-controlled via git
 
 ---
 
 ## 🎨 Adaptation from Claude Code
 
 ### What Changed
-- **No Hooks**: Behavioral guidance instead of enforcement
-- **Simpler Setup**: Manual instead of Ansible
-- **Soft Enforcement**: Instructions instead of blocks
-- **Full Tool Access**: Agents guided by patterns
+
+* **13 Agents** (instead of 14): Backend-Tester replaced by dual testing roles — @Tester (White-Box) and @User (Black-Box)
+* **Separated Roles:** Project Manager coordinates; Product Manager defines user stories
+* **Expanded Design Phase:** Architect and Designer now produce documentation and specifications as outputs
+* **Behavioral Clarifications:** Design-to-Execution workflow explicitly defined
+* **Simpler Setup:** Soft enforcement instead of hooks
 
 ### What Stayed
-- **14 Agents**: All specialists preserved
-- **AgentTask System**: Complete workflow
-- **Memory System**: Pattern storage
-- **Complexity Tiers**: Auto-sizing
-- **Best Practices**: Auto-discovery
 
-See `ADAPTATION_GUIDE.md` for complete details.
+* **AgentTask System:** Context-driven, memory-first workflow
+* **Complexity Tiers:** Nano → Mega auto-sizing
+* **Memory System:** Pattern and knowledge retention
+* **Best Practices:** Auto-discovery integration
+
+See `ADAPTATION_GUIDE.md` for detailed differences.
 
 ---
 
 ## 📚 Documentation
 
 ### Core Guides
-- **[SETUP.md](SETUP.md)** - Installation and configuration
-- **[AGENTS.md](AGENTS.md)** - Agent behavioral patterns and standards
-- **[ADAPTATION_GUIDE.md](ADAPTATION_GUIDE.md)** - Changes from Claude Code
-- **[.opencode/config.yaml](.opencode/config.yaml)** - System configuration
+
+* **[SETUP.md](SETUP.md)** — Installation and configuration
+* **[AGENTS.md](AGENTS.md)** — Agent behavioral patterns and standards
+* **[ADAPTATION_GUIDE.md](ADAPTATION_GUIDE.md)** — Changes from Claude Code
+* **[.opencode/config.yaml](.opencode/config.yaml)** — System configuration
 
 ### Agent Standardization Project (In Progress)
-- **[docs/agent-standardization-quickstart.md](docs/agent-standardization-quickstart.md)** - 📍 START HERE - Quick overview
-- **[docs/agent-standardization-tracker.md](docs/agent-standardization-tracker.md)** - Progress dashboard (25% complete)
-- **[docs/opencode-agent-standard.md](docs/opencode-agent-standard.md)** - Complete specification
-- **[docs/agent-system-review.md](docs/agent-system-review.md)** - Analysis of intelligent-claude-code
-- **[docs/agent-format-compatibility.md](docs/agent-format-compatibility.md)** - Compatibility analysis
-- **[docs/phase1-implementation-summary.md](docs/phase1-implementation-summary.md)** - ✅ Phase 1 complete
-- **[docs/phase2-enforcement-patterns-plan.md](docs/phase2-enforcement-patterns-plan.md)** - 📋 Phase 2 plan
+
+* **[docs/agent-standardization-quickstart.md](docs/agent-standardization-quickstart.md)** — 📍 START HERE — Quick overview
+* **[docs/agent-standardization-tracker.md](docs/agent-standardization-tracker.md)** — Progress dashboard (25% complete)
+* **[docs/opencode-agent-standard.md](docs/opencode-agent-standard.md)** — Full specification
+* **[docs/agent-system-review.md](docs/agent-system-review.md)** — Analysis of Claude Code
+* **[docs/agent-format-compatibility.md](docs/agent-format-compatibility.md)** — Compatibility analysis
+* **[docs/phase1-implementation-summary.md](docs/phase1-implementation-summary.md)** — ✅ Phase 1 complete
+* **[docs/phase2-enforcement-patterns-plan.md](docs/phase2-enforcement-patterns-plan.md)** — 📋 Phase 2 plan
 
 ---
 
 ## 💡 Usage Examples
 
 ### Create AgentTask
+
 ```
-@PM create AgentTask to implement JWT authentication
+@Project-Manager create AgentTask to implement JWT authentication
 ```
 
 ### Break Down Story
+
 ```
-@PM analyze stories/STORY-001.md and create AgentTasks
+@Project-Manager analyze stories/STORY-001.md and create AgentTasks
 ```
 
 ### Implement Feature
+
 ```
 @Developer implement agenttasks/AGENTTASK-001.yaml
 ```
 
 ### Search Memory
+
 ```
 @Developer search memory for authentication patterns
 ```
 
 ### Add to Memory
+
 ```
 @Developer store this JWT implementation pattern in memory
 ```
@@ -221,7 +234,9 @@ See `ADAPTATION_GUIDE.md` for complete details.
 ## ⚙️ Configuration
 
 ### OpenCode MCP Servers
+
 Edit `opencode.jsonc`:
+
 ```jsonc
 {
   "mcp": {
@@ -235,21 +250,25 @@ Edit `opencode.jsonc`:
 ```
 
 ### Agent System
+
 Edit `.opencode/config.yaml`:
+
 ```yaml
 agent_system:
   specialists:
-    pm: { enabled: true }
+    project-manager: { enabled: true }
+    product-manager: { enabled: true }
     developer: { enabled: true }
     # ...
-
 agenttask_system:
   complexity_tiers:
     medium: { min: 6, max: 15 }
 ```
 
 ### Behavioral Patterns
+
 Edit `AGENTS.md`:
+
 ```markdown
 ## Code Standards
 - Your conventions
@@ -262,32 +281,36 @@ Edit `AGENTS.md`:
 ## 🌟 Benefits
 
 ### For Teams
-- **Consistent Patterns**: Everyone follows same standards
-- **Knowledge Sharing**: Memory system captures learnings
-- **Clear Roles**: Specialists have defined responsibilities
-- **Quality Built-In**: Validation at every step
+
+* **Consistent Patterns:** Shared standards across roles
+* **Knowledge Sharing:** Memory captures learnings
+* **Clear Roles:** Project Manager vs Product Manager separation
+* **Quality Built-In:** Validation and documentation enforced
 
 ### For Projects
-- **Complexity Management**: Auto-sizing prevents overwhelm
-- **Context Preservation**: Everything documented in AgentTasks
-- **Pattern Reuse**: Memory system prevents reinvention
-- **Progressive Enhancement**: Start simple, scale up
+
+* **Complexity Management:** Auto-sizing prevents overload
+* **Context Preservation:** Full traceability in AgentTasks
+* **Pattern Reuse:** Memory system prevents reinvention
+* **Progressive Scaling:** Start small, grow safely
 
 ### For Development
-- **Memory-First**: Leverage past solutions
-- **Complete Context**: Everything needed in AgentTask
-- **Structured Work**: Templates guide execution
-- **Quality Gates**: Tests and validation required
+
+* **Memory-First:** Leverage past solutions
+* **Complete Context:** Everything embedded in tasks
+* **Structured Workflow:** Templates ensure consistency
+* **Quality Gates:** Testing and validation mandatory
 
 ---
 
 ## 🔄 Workflow
 
 ### Daily Usage
+
 ```
 1. User requests feature
-2. @PM analyzes and creates AgentTask
-3. @PM delegates to specialist
+2. @Project-Manager analyzes and creates AgentTask
+3. @Project-Manager delegates to specialist
 4. Specialist searches memory
 5. Specialist implements with context
 6. Specialist validates and tests
@@ -296,6 +319,7 @@ Edit `AGENTS.md`:
 ```
 
 ### Team Collaboration
+
 ```
 1. Patterns stored in memory/
 2. Committed to git
@@ -312,37 +336,38 @@ Edit `AGENTS.md`:
 → Make instructions more explicit in AGENTS.md
 
 **Memory not being used?**
-→ Emphasize memory-first in agent definitions
+→ Emphasize Memory-First workflow in agent definitions
 
 **AgentTasks missing context?**
-→ Use templates completely, replace all placeholders
+→ Use the full template, replace all placeholders
 
 **Unclear complexity scoring?**
-→ See calculation formula in AGENTS.md
+→ See calculation table in AGENTS.md
 
 ---
 
 ## 📖 Learn More
 
-- **Original Project**: [intelligent-claude-code](https://github.com/intelligentcode-ai/intelligent-claude-code)
-- **OpenCode**: [opencode.ai](https://opencode.ai)
-- **MCP Servers**: [modelcontextprotocol.io](https://modelcontextprotocol.io)
+* **Original Project:** [intelligent-claude-code](https://github.com/intelligentcode-ai/intelligent-claude-code)
+* **OpenCode:** [opencode.ai](https://opencode.ai)
+* **MCP Servers:** [modelcontextprotocol.io](https://modelcontextprotocol.io)
 
 ---
 
 ## 🤝 Contributing
 
 This is an adaptation for your project. Customize:
-- Add agents to `.opencode/agents/`
-- Create practices in `.opencode/patterns/`
-- Build memory in `memory/`
-- Share improvements
+
+* Add agents to `.opencode/agents/`
+* Create practices in `.opencode/patterns/`
+* Build memory in `memory/`
+* Share improvements with your team
 
 ---
 
 ## 📄 License
 
-Based on [intelligent-claude-code](https://github.com/intelligentcode-ai/intelligent-claude-code)  
+Based on [intelligent-claude-code](https://github.com/intelligentcode-ai/intelligent-claude-code)
 Adapted for OpenCode
 
 ---
@@ -350,22 +375,16 @@ Adapted for OpenCode
 ## 🎯 Next Steps
 
 1. Read [SETUP.md](SETUP.md) for installation
-2. Review [AGENTS.md](AGENTS.md) for patterns
-3. Try creating your first AgentTask
-4. Build your memory/ with patterns
-5. Customize for your workflow
+2. Review [AGENTS.md](AGENTS.md) for behavioral patterns
+3. Create your first AgentTask
+4. Build your memory/ library
+5. Customize for your team workflow
 
 ---
 
 **Ready to start?**
-```
-@PM help
-@PM create AgentTask for [your first task]
-```
 
----
-
-**Version**: 1.0.0  
-**Based on**: intelligent-claude-code v8.20.68  
-**Adapted for**: OpenCode  
-**Date**: 2025-11-08
+```
+@Project-Manager help
+@Project-Manager create AgentTask for [your first task]
+```
