@@ -172,10 +172,20 @@ See `ADAPTATION_GUIDE.md` for complete details.
 
 ## 📚 Documentation
 
+### Core Guides
 - **[SETUP.md](SETUP.md)** - Installation and configuration
 - **[AGENTS.md](AGENTS.md)** - Agent behavioral patterns and standards
 - **[ADAPTATION_GUIDE.md](ADAPTATION_GUIDE.md)** - Changes from Claude Code
 - **[.opencode/config.yaml](.opencode/config.yaml)** - System configuration
+
+### Agent Standardization Project (In Progress)
+- **[docs/agent-standardization-quickstart.md](docs/agent-standardization-quickstart.md)** - 📍 START HERE - Quick overview
+- **[docs/agent-standardization-tracker.md](docs/agent-standardization-tracker.md)** - Progress dashboard (25% complete)
+- **[docs/opencode-agent-standard.md](docs/opencode-agent-standard.md)** - Complete specification
+- **[docs/agent-system-review.md](docs/agent-system-review.md)** - Analysis of intelligent-claude-code
+- **[docs/agent-format-compatibility.md](docs/agent-format-compatibility.md)** - Compatibility analysis
+- **[docs/phase1-implementation-summary.md](docs/phase1-implementation-summary.md)** - ✅ Phase 1 complete
+- **[docs/phase2-enforcement-patterns-plan.md](docs/phase2-enforcement-patterns-plan.md)** - 📋 Phase 2 plan
 
 ---
 
