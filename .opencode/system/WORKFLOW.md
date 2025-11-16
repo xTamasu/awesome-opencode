@@ -120,10 +120,9 @@ Transform the user’s initial request into structured, validated, implementable
 2. Refinement and clarification
 3. Validation with stakeholders
 4. Creation of:
-
-   * backlog items
-   * user stories
-   * acceptance criteria
+    * **backlog items** – created by the *Requirements Engineer*
+    * **user stories** – written by the *Product Manager*
+    * **acceptance criteria** – defined by the *Product Manager*
 5. Risk analysis
 6. Prioritization
 7. Generation of **initial Planning AgentTasks** (if needed)
